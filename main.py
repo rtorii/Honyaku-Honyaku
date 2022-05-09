@@ -25,9 +25,6 @@ language_df = pd.read_csv('languages.csv')
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    # loaded = KeyedVectors.load('data/model', mmap='r')# load w2v model
-    # loaded = KeyedVectors.load('https://streamlithonyakudata.s3.ap-northeast-1.amazonaws.com/model', mmap='r')
-    # loaded = KeyedVectors.load_word2vec_format('model.bin', binary=True , unicode_errors='ignore')
     loaded = KeyedVectors.load_word2vec_format('https://streamlithonyakudata.s3.ap-northeast-1.amazonaws.com/model.bin', binary=True , unicode_errors='ignore')
     return loaded
 
