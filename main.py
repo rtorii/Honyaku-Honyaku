@@ -71,7 +71,6 @@ def translate(text, language, count):
     if similarity < 0.01:
         similarity = 0.01
         less = "未満"
-    print(int(similarity*100))
     progress_bar = st.progress(int(similarity*100))
     status_text.text(f'意味の類似度: {int(similarity*100)}%{less}')
        
