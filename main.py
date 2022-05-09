@@ -36,7 +36,7 @@ reading_model.empty()
 
 def main():
     uploader = st.file_uploader("テキストファイルをアップロード、またはテキストボックスに文章を入力してください。", type=['txt'])
-    text_box = st.text_area(label="", placeholder='テキストボックス：日本語の文章を入力してください。', max_chars=1000)
+    text_box = st.text_area(label="", placeholder='テキストボックス：日本語の文章を入力してください。\n 例：坊主が屏風に上手に坊主の絵を描いた。', max_chars=1000)
     language_option = st.selectbox('どの言語に翻訳しますか？',language_df['日本語'])
     count_option = st.selectbox('何回翻訳しますか？（2回英語の場合、文章を 英語 → 日本語 → 英語 → 日本語 の順に翻訳します。）',[i for i in range(1,6)])
 
@@ -66,7 +66,6 @@ def translate(text, language, count):
     last_vector = average_vec(wakati_gaki(text))
     status_text = st.empty()
     similarity = (1 - spatial.distance.cosine(initial_vector, last_vector))
-    # similarity = (similarity + 1) / 2
     less = ""
     honyaku_now.empty()
     if similarity < 0.01:
