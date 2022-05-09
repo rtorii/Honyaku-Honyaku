@@ -14,7 +14,7 @@ import io
 # fs = s3fs.S3FileSystem(anon=False)
 
 st.title("翻訳ほんやく抹茶味")
-st.write('日本語の文章を他言語に変換し、日本語に変換し直した時に文章の意味がどれくらい変わるか判断します。')
+st.write('日本語の文章を他言語に変換し、日本語に再変換した時に文章の意味がどれくらい変わるか判断します。')
 reading_model = st.empty()
 reading_model.text("現在プログラムを読み込み中ですので、お待ちください...")
 
@@ -36,9 +36,9 @@ reading_model.empty()
 
 def main():
     uploader = st.file_uploader("テキストファイルをアップロード、またはテキストボックスに文章を入力してください。", type=['txt'])
-    text_box = st.text_area(label="", placeholder='テキストボックス：日本語の文章を入れてください。', max_chars=1000)
+    text_box = st.text_area(label="", placeholder='テキストボックス：日本語の文章を入力してください。', max_chars=1000)
     language_option = st.selectbox('どの言語に翻訳しますか？',language_df['日本語'])
-    count_option = st.selectbox('何回翻訳しますか？（2回英語に翻訳する場合、文章を 英語 → 日本語 → 英語 → 日本語 の順に翻訳します。）',[i for i in range(1,6)])
+    count_option = st.selectbox('何回翻訳しますか？（2回英語の場合、文章を 英語 → 日本語 → 英語 → 日本語 の順に翻訳します。）',[i for i in range(1,6)])
 
     button_pressed = st.button('翻訳を始める')
     if (text_box.strip() != "") and button_pressed:
