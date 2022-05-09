@@ -100,8 +100,7 @@ def average_vec(wakati_words):
     average_vector = [0 for i in range(200)]
     for word in wakati_words:
         average_vector+=model.get_vector(word)
-    average_vector = average_vector / len(wakati_words)
-    return average_vector
+    return average_vector / len(wakati_words)
 
 if __name__ == '__main__':
     main()
