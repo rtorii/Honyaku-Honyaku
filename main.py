@@ -14,7 +14,7 @@ import io
 # fs = s3fs.S3FileSystem(anon=False)
 
 st.title("翻訳ほんやく抹茶味")
-st.write('日本語の文章を他言語に変換し、日本語に再変換した時に文章の意味がどれくらい変わるか判断します。')
+st.write('日本語の文章を他言語に翻訳し、日本語に再翻訳した時に文章の意味がどれくらい変わるか判断します。')
 reading_model = st.empty()
 reading_model.text("現在プログラムを読み込み中ですので、お待ちください...")
 
