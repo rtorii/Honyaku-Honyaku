@@ -60,9 +60,14 @@ def translate(text, language, count):
         text = tr.translate(text, src="ja", dest=option).text
         text = tr.translate(text, src=option, dest="ja").text
         honyaku+=language + " → " + "日本語 → "
-    last_vector = average_vec(wakati_gaki(text))
+
+    words = wakati_gaki(text)
+    if len(words) == 0:
+        similarity = 0
+    else:
+        last_vector = average_vec(words)
+        similarity = (1 - spatial.distance.cosine(initial_vector, last_vector))
     status_text = st.empty()
-    similarity = (1 - spatial.distance.cosine(initial_vector, last_vector))
     less = ""
     honyaku_now.empty()
     if similarity < 0.01:
@@ -70,7 +75,7 @@ def translate(text, language, count):
         less = "未満"
     progress_bar = st.progress(int(similarity*100))
     status_text.text(f'意味の類似度: {int(similarity*100)}%{less}')
-       
+
     initial = st.text_area(label="インプット時の文章", value=initial_text, max_chars=1000, on_change=None)
     output = st.text_area(label=honyaku[:-2]+"の順に翻訳された文章", value=text, max_chars=1000, on_change=None)
 
