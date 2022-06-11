@@ -1,5 +1,7 @@
 # 翻訳ほんやく抹茶味 (Python: Streamlit)
 
+English README: https://github.com/rtorii/Honyaku-Honyaku/blob/main/README_en.md
+
 アプリのリンク: https://share.streamlit.io/rtorii/honyaku-honyaku/main/main.py
 
 **説明：**
