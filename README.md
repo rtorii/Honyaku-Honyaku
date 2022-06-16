@@ -32,6 +32,19 @@ English README: https://github.com/rtorii/Honyaku-Honyaku/blob/main/README_en.md
 | 4回 （オランダ語 → 日本語 → オランダ語 → 日本語 → オランダ語 → 日本語 → オランダ語 → 日本語）| 東京特許付与局長が本日突然さよならを言うことを拒否した | 66% |
 | 5回 （オランダ語 → 日本語 → オランダ語 → 日本語 → オランダ語 → 日本語 → オランダ語 → 日本語 → オランダ語 → 日本語）| 東京特許付与局長が本日さよならを言うことを突然拒否した | 66% |
 
+**文章の類似度の計算方法：**
+
+1. 文章をWord2vecでベクトル化します。
+   - 文章をMeCabでワードに分割し、名詞、動詞、形容詞のワードをWord2vecでベクトル化し、それらの平均ベクトルを文章のベクトルとしました。
+2. コサイン類似度を計算します。コサイン類似度が0以上の場合、コサイン類似度 ✕ 100% を文章同士の類似度としました。例えばコサイン類似度が0.99の場合、類似度は99％とします。コサイン類似度が0未満の場合は、類似度を1％未満としました。
+
+**文章をベクトル化するWord2vecモデルの作成：**
+
+日本語のWikipediaの記事をMeCabで分かち書きしたデータで学習しました。ベクトルの次元は、200次元です。
+- Word2vecモデル作成の際に参照した記事：https://qiita.com/Ninagawa_Izumi/items/4e9b895e233c982118fb
+
+モデルは、GitHubにアップするには、容量が大きいため、Amazon S3に保存しています。
+- モデルのダウンロード: https://streamlithonyakudata.s3.ap-northeast-1.amazonaws.com/model.bin
 
 
 **注意点：**
@@ -52,18 +65,5 @@ English README: https://github.com/rtorii/Honyaku-Honyaku/blob/main/README_en.md
 | ------ | 
 | ![](img/3.png) | 
 
-**文章の類似度の計算方法：**
-
-1. 文章をWord2vecでベクトル化します。
-   - 文章をMeCabでワードに分割し、名詞、動詞、形容詞のワードをWord2vecでベクトル化し、それらの平均ベクトルを文章のベクトルとしました。
-2. コサイン類似度を計算します。コサイン類似度が0以上の場合、コサイン類似度 ✕ 100% を文章同士の類似度としました。例えばコサイン類似度が0.99の場合、類似度は99％とします。コサイン類似度が0未満の場合は、類似度を1％未満としました。
-
-**文章をベクトル化するWord2vecモデルの作成：**
-
-日本語のWikipediaの記事をMeCabで分かち書きしたデータで学習しました。ベクトルの次元は、200次元です。
-- Word2vecモデル作成の際に参照した記事：https://qiita.com/Ninagawa_Izumi/items/4e9b895e233c982118fb
-
-モデルは、GitHubにアップするには、容量が大きいため、Amazon S3に保存しています。
-- モデルのダウンロード: https://streamlithonyakudata.s3.ap-northeast-1.amazonaws.com/model.bin
 
 05/09/22に作成。
