@@ -77,7 +77,7 @@ def translate(text, language, count):
     status_text.text(f'意味の類似度: {int(similarity*100)}%{less}')
 
     initial = st.text_area(label="インプット時の文章", value=initial_text, max_chars=1000, on_change=None)
-    output = st.text_area(label=honyaku[:-2]+"の順に翻訳された文章", value=text, max_chars=1000, on_change=None)
+    output = st.text_area(label="日本語から "+honyaku[:-2]+"の順に翻訳された文章", value=text, max_chars=1000, on_change=None)
 
     f = open('output.txt', 'w')
     f.write(text)
